@@ -23,9 +23,8 @@ class Searchbar extends Component {
       });
       return;
     }
-    this.setState({ query: '' });
-
     this.props.onSubmit(this.state.query);
+    this.setState({ query: '' });
     // console.log(onSubmit);
     // onSubmit(searchQuery);
   };
