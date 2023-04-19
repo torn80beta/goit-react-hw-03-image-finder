@@ -6,7 +6,7 @@ import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 import { LoadMoreButton } from 'components/LoadMoreButton/LoadMoreButton';
 import { ThreeDots } from 'react-loader-spinner';
 
-const urlCreator = new UrlCreator();
+export const urlCreator = new UrlCreator();
 
 class ImageGallery extends Component {
   state = {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import { urlCreator } from '../ImageGallery/ImageGallery';
 import {
   StyledSearForm,
   StyledLogo,
@@ -23,6 +24,7 @@ class Searchbar extends Component {
       });
       return;
     }
+    urlCreator.resetPage();
     this.props.onSubmit(this.state.query);
     this.setState({ query: '' });
     // console.log(onSubmit);

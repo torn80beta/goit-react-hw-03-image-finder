@@ -26,7 +26,7 @@ export default class UrlCreator {
     this.page += 1;
   }
 
-  clearPageValue() {
+  resetPage() {
     this.page = 1;
   }
 }
