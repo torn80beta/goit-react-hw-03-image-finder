@@ -12,3 +12,9 @@ export const StyledImageGalleryUl = styled.ul`
   margin-left: auto;
   margin-right: auto;
 `;
+
+export const StyledLoadSpinner = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 0%, auto;
+`;
