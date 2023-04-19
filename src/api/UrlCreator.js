@@ -13,8 +13,8 @@ export default class UrlCreator {
     return refs;
   }
 
-  getUrl(query, page) {
-    const url = `${this.BASE_URL}?key=${this.API_KEY}&q=${query}&image_type=photo&orientation=horizontal&per_page=12&page=${page}`;
+  getUrl(query) {
+    const url = `${this.BASE_URL}?key=${this.API_KEY}&q=${query}&image_type=photo&orientation=horizontal&per_page=12&page=${this.page}`;
     return url;
   }
 
