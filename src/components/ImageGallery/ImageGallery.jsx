@@ -5,6 +5,7 @@ import { fetchUrl } from 'api/FetchUrl';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 import { LoadMoreButton } from 'components/LoadMoreButton/LoadMoreButton';
 import { ThreeDots } from 'react-loader-spinner';
+import { scroll } from 'utils/scroll';
 
 export const urlCreator = new UrlCreator();
 
@@ -18,20 +19,19 @@ class ImageGallery extends Component {
     if (prevProps.searchQuery !== this.props.searchQuery) {
       // console.log(`prevProps: ${prevProps.searchQuery}`);
       // console.log(`newProps: ${this.props.searchQuery}`);
-      console.log('Props not even');
+      // console.log('Props not even');
       this.setState({ loading: true });
       setTimeout(() => {
         fetchUrl(urlCreator.getUrl(this.props.searchQuery))
           .then(response => {
-            this.setState(
-              { data: response.hits }
-              // , () =>
-              // console.log(this.state.loading)
-            );
+            this.setState({ data: response.hits });
             // console.log(response);
           })
           .finally(() => this.setState({ loading: false }));
-      }, 1000);
+      }, 500);
+    }
+    if (prevState.data !== this.state.data) {
+      scroll();
     }
   }
 
@@ -50,9 +50,12 @@ class ImageGallery extends Component {
           this.setState(prevState => ({
             data: [...prevState.data, ...response.hits],
           }));
+          scroll();
         })
-        .finally(() => this.setState({ loading: false }));
-    }, 1000);
+        .finally(() => {
+          this.setState({ loading: false });
+        });
+    }, 500);
     // .then(console.log(this.state.data));
   };
 
@@ -63,7 +66,7 @@ class ImageGallery extends Component {
 
     return (
       <>
-        <StyledImageGalleryUl>
+        <StyledImageGalleryUl className="gallery">
           {data &&
             data.map(item => (
               <ImageGalleryItem

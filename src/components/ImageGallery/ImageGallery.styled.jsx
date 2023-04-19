@@ -16,5 +16,5 @@ export const StyledImageGalleryUl = styled.ul`
 export const StyledLoadSpinner = styled.div`
   display: flex;
   justify-content: center;
-  margin: 0%, auto;
+  margin: 0 auto;
 `;

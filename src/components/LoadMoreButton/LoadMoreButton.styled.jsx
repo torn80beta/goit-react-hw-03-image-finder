@@ -26,7 +26,7 @@ export const StyledLoadMoreButton = styled.button`
   -webkit-user-select: none;
   touch-action: manipulation;
   width: auto;
-  margin: 30px auto 30px;
+  margin: 10px auto 0px;
 
   &:hover,
   :focus {
