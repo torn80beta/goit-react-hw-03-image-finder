@@ -6,13 +6,18 @@ import {
 
 export const ImageGalleryItem = ({
   data: { webformatURL, largeImageURL, tags },
+  onImageClick,
 }) => {
-  //   console.log(largeImageURL);
+  // console.log(largeImageURL);
   return (
     <StyledImageGalleryItemLi>
-      {/* <a href={largeImageURL}> */}
-      <StyledImageGalleryItemImg src={webformatURL} alt={tags} />
-      {/* </a> */}
+      <StyledImageGalleryItemImg
+        src={webformatURL}
+        alt={tags}
+        onClick={() => {
+          onImageClick(largeImageURL, tags);
+        }}
+      />
     </StyledImageGalleryItemLi>
   );
 };

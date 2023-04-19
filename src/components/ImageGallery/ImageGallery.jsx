@@ -58,12 +58,20 @@ class ImageGallery extends Component {
 
   render() {
     const { data } = this.state;
+    const { onImageClick } = this.props;
+    // console.log(onImageClick);
 
     return (
       <>
         <StyledImageGalleryUl>
           {data &&
-            data.map(item => <ImageGalleryItem key={item.id} data={item} />)}
+            data.map(item => (
+              <ImageGalleryItem
+                key={item.id}
+                data={item}
+                onImageClick={onImageClick}
+              />
+            ))}
         </StyledImageGalleryUl>
         {this.state.loading && (
           <StyledLoadSpinner>
