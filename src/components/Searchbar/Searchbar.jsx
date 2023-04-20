@@ -18,8 +18,8 @@ class Searchbar extends Component {
   handleSearchSubmit = e => {
     e.preventDefault();
     if (this.state.query === '') {
-      toast.warning('Enter your search query, please!', {
-        position: 'top-left',
+      toast.info('Enter your search query, please!', {
+        position: 'top-center',
         autoClose: 2000,
         theme: 'colored',
       });
