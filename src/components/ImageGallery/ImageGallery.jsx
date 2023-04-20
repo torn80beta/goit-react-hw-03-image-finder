@@ -18,6 +18,10 @@ class ImageGallery extends Component {
     error: null,
   };
 
+  clearWaitingQueue = () => {
+    toast.clearWaitingQueue();
+  };
+
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.searchQuery !== this.props.searchQuery) {
       this.setState({ loading: true });
@@ -45,12 +49,9 @@ class ImageGallery extends Component {
         autoClose: 2000,
         theme: 'colored',
       });
+      this.clearWaitingQueue();
       return;
     }
-
-    const clearWaitingQueue = () => {
-      toast.clearWaitingQueue();
-    };
   }
 
   handleLoadMore = () => {

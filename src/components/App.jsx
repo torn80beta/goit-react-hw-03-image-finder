@@ -43,7 +43,7 @@ class App extends Component {
           searchQuery={this.state.query}
           onImageClick={this.openModal}
         />
-        <ToastContainer transition={Zoom} />
+        <ToastContainer transition={Zoom} limit={1} />
         {this.state.modalOpen && (
           <Modal closeModal={this.closeModal}>
             <img
