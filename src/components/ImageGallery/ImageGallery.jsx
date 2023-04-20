@@ -47,6 +47,10 @@ class ImageGallery extends Component {
       });
       return;
     }
+
+    const clearWaitingQueue = () => {
+      toast.clearWaitingQueue();
+    };
   }
 
   handleLoadMore = () => {
@@ -102,7 +106,7 @@ class ImageGallery extends Component {
             />
           </StyledLoadSpinner>
         )}
-        {data && data.length > 15 && (
+        {data && data.length > 0 && (
           <LoadMoreButton onClick={this.handleLoadMore} />
         )}
         {error && <h2 style={{ textAlign: 'center' }}>{error}</h2>}
