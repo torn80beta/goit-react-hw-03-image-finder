@@ -25,7 +25,7 @@ class ImageGallery extends Component {
           .then(response => {
             this.setState({ data: response.hits });
           })
-          .catch(error => this.setState({ error }))
+          .catch(error => this.setState({ error: error.message }))
           .finally(() => this.setState({ loading: false }));
       }, 250);
     }
@@ -68,7 +68,6 @@ class ImageGallery extends Component {
 
     return (
       <>
-        {error && <h2>ERROR!</h2>}
         <StyledImageGalleryUl className="gallery">
           {data &&
             data.map(item => (
@@ -94,6 +93,7 @@ class ImageGallery extends Component {
           </StyledLoadSpinner>
         )}
         {data && <LoadMoreButton onClick={this.handleLoadMore} />}
+        {error && <h2 style={{ textAlign: 'center' }}>{error}</h2>}
       </>
     );
   }
