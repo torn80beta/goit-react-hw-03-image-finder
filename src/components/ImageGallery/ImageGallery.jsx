@@ -18,16 +18,19 @@ class ImageGallery extends Component {
     error: null,
   };
 
-  clearWaitingQueue = () => {
-    toast.clearWaitingQueue();
-  };
-
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.searchQuery !== this.props.searchQuery) {
       this.setState({ loading: true });
       setTimeout(() => {
         fetchUrl(urlCreator.getUrl(this.props.searchQuery))
           .then(response => {
+            if (response.totalHits === 0) {
+              toast.info("There's no images for your request.", {
+                position: 'top-center',
+                autoClose: 2000,
+                theme: 'colored',
+              });
+            }
             this.setState({ data: response.hits });
           })
           .catch(error => this.setState({ error: error.message }))
@@ -41,16 +44,6 @@ class ImageGallery extends Component {
       prevState.data !== this.state.data
     ) {
       scroll();
-    }
-
-    if (this.state.data && this.state.data.length === 0) {
-      toast.info("There's no images for your request.", {
-        position: 'top-center',
-        autoClose: 2000,
-        theme: 'colored',
-      });
-      this.clearWaitingQueue();
-      return;
     }
   }
 
