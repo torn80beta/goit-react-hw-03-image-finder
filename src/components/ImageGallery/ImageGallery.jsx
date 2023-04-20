@@ -14,6 +14,7 @@ class ImageGallery extends Component {
   state = {
     data: null,
     loading: false,
+    error: null,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -24,10 +25,16 @@ class ImageGallery extends Component {
           .then(response => {
             this.setState({ data: response.hits });
           })
+          .catch(error => this.setState({ error }))
           .finally(() => this.setState({ loading: false }));
       }, 250);
     }
-    if (prevState.data !== this.state.data) {
+
+    if (
+      this.state.data &&
+      this.state.data.length > 0 &&
+      prevState.data !== this.state.data
+    ) {
       scroll();
     }
   }
@@ -56,11 +63,12 @@ class ImageGallery extends Component {
   };
 
   render() {
-    const { data } = this.state;
+    const { data, error } = this.state;
     const { onImageClick } = this.props;
 
     return (
       <>
+        {error && <h2>ERROR!</h2>}
         <StyledImageGalleryUl className="gallery">
           {data &&
             data.map(item => (
