@@ -14,16 +14,19 @@ class App extends Component {
     tags: '',
   };
 
-  handleModal = (url, tags) => {
-    this.setState(({ modalOpen, largeImgUrl }) => ({
+  openModal = (url, tags) => {
+    this.setState(({ modalOpen }) => ({
       modalOpen: !modalOpen,
       largeImgUrl: url,
       tags: tags,
     }));
   };
 
+  closeModal = () => {
+    this.setState({ modalOpen: false });
+  };
+
   onSearchFormSubmit = searchQuery => {
-    // console.log(searchQuery);
     this.setState(
       { query: searchQuery }
       // , () => console.log(this.state)
@@ -36,11 +39,17 @@ class App extends Component {
         <Searchbar onSubmit={this.onSearchFormSubmit} />
         <ImageGallery
           searchQuery={this.state.query}
-          onImageClick={this.handleModal}
+          onImageClick={this.openModal}
         />
         <ToastContainer />
         {this.state.modalOpen && (
-          <Modal src={this.state.largeImgUrl} tags={this.state.tags} />
+          <Modal closeModal={this.closeModal}>
+            <img
+              className="modal-image"
+              src={this.state.largeImgUrl}
+              alt={this.state.tags}
+            />
+          </Modal>
         )}
       </>
     );

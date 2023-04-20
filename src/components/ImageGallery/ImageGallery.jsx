@@ -17,18 +17,14 @@ class ImageGallery extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.searchQuery !== this.props.searchQuery) {
-      // console.log(`prevProps: ${prevProps.searchQuery}`);
-      // console.log(`newProps: ${this.props.searchQuery}`);
-      // console.log('Props not even');
       this.setState({ loading: true });
       setTimeout(() => {
         fetchUrl(urlCreator.getUrl(this.props.searchQuery))
           .then(response => {
             this.setState({ data: response.hits });
-            // console.log(response);
           })
           .finally(() => this.setState({ loading: false }));
-      }, 500);
+      }, 250);
     }
     if (prevState.data !== this.state.data) {
       scroll();
@@ -46,7 +42,6 @@ class ImageGallery extends Component {
     setTimeout(() => {
       fetchUrl(newUrl)
         .then(response => {
-          // console.log(response.hits);
           this.setState(prevState => ({
             data: [...prevState.data, ...response.hits],
           }));
@@ -55,14 +50,13 @@ class ImageGallery extends Component {
         .finally(() => {
           this.setState({ loading: false });
         });
-    }, 500);
+    }, 250);
     // .then(console.log(this.state.data));
   };
 
   render() {
     const { data } = this.state;
     const { onImageClick } = this.props;
-    // console.log(onImageClick);
 
     return (
       <>

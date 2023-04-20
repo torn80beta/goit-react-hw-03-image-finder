@@ -8,7 +8,6 @@ export const ImageGalleryItem = ({
   data: { webformatURL, largeImageURL, tags },
   onImageClick,
 }) => {
-  // console.log(largeImageURL);
   return (
     <StyledImageGalleryItemLi>
       <StyledImageGalleryItemImg
