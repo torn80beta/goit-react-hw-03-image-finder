@@ -5,6 +5,7 @@ import { Modal } from './Modal/Modal';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
+import ScrollUpButton from './ScrollUpButton/ScrollUpButton';
 const { Component } = require('react');
 
 class App extends Component {
@@ -52,6 +53,7 @@ class App extends Component {
             />
           </Modal>
         )}
+        <ScrollUpButton />
       </>
     );
   }
