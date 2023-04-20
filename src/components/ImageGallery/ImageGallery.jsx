@@ -6,6 +6,7 @@ import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 import { LoadMoreButton } from 'components/LoadMoreButton/LoadMoreButton';
 import { ThreeDots } from 'react-loader-spinner';
 import { scroll } from 'utils/scroll';
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
 export const urlCreator = new UrlCreator();
@@ -36,6 +37,15 @@ class ImageGallery extends Component {
       prevState.data !== this.state.data
     ) {
       scroll();
+    }
+
+    if (this.state.data && this.state.data.length === 0) {
+      toast.info("There's no images for your request.", {
+        position: 'top-center',
+        autoClose: 2000,
+        theme: 'colored',
+      });
+      return;
     }
   }
 
@@ -92,7 +102,9 @@ class ImageGallery extends Component {
             />
           </StyledLoadSpinner>
         )}
-        {data && <LoadMoreButton onClick={this.handleLoadMore} />}
+        {data && data.length > 15 && (
+          <LoadMoreButton onClick={this.handleLoadMore} />
+        )}
         {error && <h2 style={{ textAlign: 'center' }}>{error}</h2>}
       </>
     );

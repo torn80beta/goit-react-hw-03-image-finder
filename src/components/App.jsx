@@ -2,7 +2,7 @@ import React from 'react';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import { Modal } from './Modal/Modal';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
 import ScrollUpButton from './ScrollUpButton/ScrollUpButton';
@@ -43,7 +43,7 @@ class App extends Component {
           searchQuery={this.state.query}
           onImageClick={this.openModal}
         />
-        <ToastContainer />
+        <ToastContainer transition={Zoom} />
         {this.state.modalOpen && (
           <Modal closeModal={this.closeModal}>
             <img

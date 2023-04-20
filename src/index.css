@@ -65,3 +65,6 @@ a {
   text-decoration: none;
 }
 
+.Toastify__toast-container--top-center {
+  top: 150px
+}

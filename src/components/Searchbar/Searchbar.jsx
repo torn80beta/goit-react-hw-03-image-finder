@@ -20,7 +20,7 @@ class Searchbar extends Component {
     if (this.state.query === '') {
       toast.warning('Enter your search query, please!', {
         position: 'top-left',
-        autoClose: 3000,
+        autoClose: 2000,
         theme: 'colored',
       });
       return;
