@@ -4,6 +4,7 @@ import ImageGallery from './ImageGallery/ImageGallery';
 import { Modal } from './Modal/Modal';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
 const { Component } = require('react');
 
 class App extends Component {
@@ -57,3 +58,16 @@ class App extends Component {
 }
 
 export default App;
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
+ImageGallery.propTypes = {
+  searchQuery: PropTypes.string.isRequired,
+  onImageClick: PropTypes.func.isRequired,
+};
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+};

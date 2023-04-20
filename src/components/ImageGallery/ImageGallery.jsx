@@ -6,6 +6,7 @@ import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 import { LoadMoreButton } from 'components/LoadMoreButton/LoadMoreButton';
 import { ThreeDots } from 'react-loader-spinner';
 import { scroll } from 'utils/scroll';
+import PropTypes from 'prop-types';
 
 export const urlCreator = new UrlCreator();
 
@@ -91,3 +92,7 @@ class ImageGallery extends Component {
 }
 
 export default ImageGallery;
+
+LoadMoreButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};

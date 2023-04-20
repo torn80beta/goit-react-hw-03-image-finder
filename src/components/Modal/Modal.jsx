@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { StyledOverlayDiv, StyledModalDiv } from './Modal.styled';
 import { createPortal } from 'react-dom';
-
+import PropTypes from 'prop-types';
 const modalRoot = document.querySelector('#modal-root');
 
 export class Modal extends Component {
   handleEscKeydown = e => {
     if (e.code === 'Escape') {
       this.props.closeModal();
-      console.log(e.code);
     }
   };
 
@@ -36,3 +35,8 @@ export class Modal extends Component {
     );
   }
 }
+
+StyledOverlayDiv.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.object.isRequired,
+};

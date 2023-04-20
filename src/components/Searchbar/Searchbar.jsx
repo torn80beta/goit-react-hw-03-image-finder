@@ -7,6 +7,7 @@ import {
   StyledInput,
   StyledSearchButton,
 } from './Searchbar.styled';
+import PropTypes from 'prop-types';
 const { Component } = require('react');
 
 class Searchbar extends Component {
@@ -64,3 +65,12 @@ class Searchbar extends Component {
 }
 
 export default Searchbar;
+
+StyledInput.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+};
+
+StyledSearForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
