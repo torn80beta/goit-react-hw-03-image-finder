@@ -13,9 +13,10 @@ export const urlCreator = new UrlCreator();
 
 class ImageGallery extends Component {
   state = {
-    data: null,
+    data: [],
     loading: false,
     error: null,
+    totalHits: 0,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -31,7 +32,13 @@ class ImageGallery extends Component {
                 theme: 'colored',
               });
             }
-            this.setState({ data: response.hits });
+            this.setState(
+              {
+                data: response.hits,
+                totalHits: response.totalHits,
+              }
+              // () => console.log(this.state.totalHits)
+            );
           })
           .catch(error => this.setState({ error: error.message }))
           .finally(() => this.setState({ loading: false }));
@@ -71,7 +78,7 @@ class ImageGallery extends Component {
   };
 
   render() {
-    const { data, error } = this.state;
+    const { data, error, totalHits } = this.state;
     const { onImageClick } = this.props;
 
     return (
@@ -100,7 +107,7 @@ class ImageGallery extends Component {
             />
           </StyledLoadSpinner>
         )}
-        {data && data.length > 0 && (
+        {data.length > 0 && data.length < totalHits && (
           <LoadMoreButton onClick={this.handleLoadMore} />
         )}
         {error && <h2 style={{ textAlign: 'center' }}>{error}</h2>}
