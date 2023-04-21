@@ -1,6 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
-import { urlCreator } from '../ImageGallery/ImageGallery';
+import { urlCreator } from 'components/App';
 import {
   StyledSearForm,
   StyledLogo,
