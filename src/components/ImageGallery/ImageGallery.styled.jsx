@@ -8,13 +8,8 @@ export const StyledImageGalleryUl = styled.ul`
   margin-top: 80px;
   margin-bottom: 0;
   padding: 0;
+  padding-bottom: 10px;
   list-style: none;
   margin-left: auto;
   margin-right: auto;
-`;
-
-export const StyledLoadSpinner = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
 `;
